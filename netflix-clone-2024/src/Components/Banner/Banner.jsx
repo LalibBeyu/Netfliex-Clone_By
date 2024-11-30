@@ -1,13 +1,7 @@
-// import React from 'react'
 
-// export const Banner = () => {
-//   return (
-//     <div>Banner</div>
-//   )
-// }
 
 import { useEffect, useState } from "react";
-import axios from "../../utils/axios";
+import axios from "../../Utils/axios";
 import requests from "../../utils/requests";
 import "./Banner.css";
 
@@ -18,11 +12,9 @@ const Banner = () => {
     (async () => {
       try {
         const request = await axios.get(requests.fetchNetflixOriginals);
-        setMovies(
-          request.data.results[
-            Math.floor(Math.random() * request.data.results.length)
-          ]
-        );
+       
+        setMovies(request.data.results[Math.floor(Math.random() * request.data.results.length)]);
+        console.log("Just to watch the result"+ requests)
       } catch (error) {
         console.log("error", error);
       }
@@ -35,7 +27,7 @@ const Banner = () => {
 
   return (
     <div
-      className="banner"
+      className = "banner"
       style={{
         backgroundSize: "cover",
         backgroundImage: `url('https://image.tmdb.org/t/p/original${movie?.backdrop_path}')`,
@@ -43,11 +35,11 @@ const Banner = () => {
         backgroundRepeat: "no repeat",
       }}
     >
-      <div className="banner_contents">
-        <h1 className="banner_title">
+      <div className = "banner_contents">
+        <h1 className ="banner_title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
-        <div className="banner_buttons">
+        <div className = "banner_buttons">
           <button className="banner_button  play"> play</button>
           <button className="banner_button"> My List</button>
         </div>
